@@ -1,0 +1,23 @@
+function formatNumber($v_num)
+{
+    $v_str  =   ',';
+    $pos    =   strpos($v_num,$v_str);
+    
+    if($pos === FALSE)
+    {
+        $separa = explode('.', $v_num);
+        $n_int  =   number_format($separa[0], 0, ',', '.');
+        $n_dec  = substr($separa[1],0,2);
+        $n_format   =   $n_int.','.$n_dec;       
+    }
+    else 
+    {
+        $v_n  =   str_replace('.','',$v_num);
+        $v_n  =   str_replace(',','.',$v_n);
+        $separa = explode('.', $v_n);
+        $n_int  =   number_format($separa[0], 0, ',', '.');
+        $n_dec  = substr($separa[1],0,2);
+        $n_format   =   $n_int.','.$n_dec;        
+    }
+    return $n_format;
+}
